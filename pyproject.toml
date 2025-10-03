@@ -55,7 +55,7 @@ Repository = "https://github.com/straicoai/straico-python"
 "Bug Tracker" = "https://github.com/straicoai/straico-python/issues"
 
 [project.scripts]
-straico = "straico_api.cli:main"
+straico-api = "straico_api.cli:main"
 
 [tool.setuptools]
 packages = ["straico_api"]
