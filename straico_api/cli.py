@@ -281,7 +281,7 @@ Examples:
     # Validate quantity parameter
     if args.quantity is not None and (args.quantity < 1 or args.quantity > 4):
         print(
-            f"❌ Error: Quantity must be between 1 and 4 (got {args.quantity})",
+            f"❌ Error: Number of models must be between 1 and 4 (got {args.quantity})",
             file=sys.stderr,
         )
         sys.exit(1)
