@@ -293,12 +293,13 @@ Examples:
             file=sys.stderr,
         )
         sys.exit(1)
-    if args.no_animation is None:
-        show_animation = True
-    else:
-        show_animation = False
 
-    if args.response_only is None:
+    if args.no_animation:
+        show_animation = False
+    else:
+        show_animation = True
+
+    if args.response_only:
         response_only = True
     else:
         response_only = False
