@@ -29,7 +29,7 @@ def get_api_key() -> str:
     return api_key
 
 
-def format_response(response: Dict) -> str:
+def format_response(response: Dict, response_only: bool = False) -> str:
     """
     Format the API response for display.
 
@@ -130,12 +130,12 @@ def format_response(response: Dict) -> str:
 
         # Get model selector justification if available
         justification = data.get("model_selector_justification", "")
+        if not response_only:
+            output += "\n" + "=" * 60 + "\n"
+            output += f"💰 Total Price: {total_price} coins | Total Words: {total_words}\n"
 
-        output += "\n" + "=" * 60 + "\n"
-        output += f"💰 Total Price: {total_price} coins | Total Words: {total_words}\n"
-
-        if justification:
-            output += f"\n📋 Model Selection Justification:\n{justification}\n"
+            if justification:
+                output += f"\n📋 Model Selection Justification:\n{justification}\n"
 
         return output
 
@@ -269,10 +269,12 @@ Examples:
 
     parser.add_argument("--api-key", help="Straico API key (can also use STRAICO_API_KEY env var)")
 
+    parser.add_argument("--no-animation", action="store_true", help="Hide loading animation")
+
     parser.add_argument(
-      "--no-animation",
-      action="store_true",
-      help="Hide loading animation"
+        "--response-only",
+        action="store_true",
+        help="Provide only response text without additional info (price, justification, etc.)",
     )
 
     parser.add_argument(
@@ -296,6 +298,10 @@ Examples:
     else:
         show_animation = False
 
+    if args.response_only is None:
+        response_only = False
+    else:
+        response_only = True
 
     # Get API key
     api_key = args.api_key or get_api_key()
@@ -366,7 +372,7 @@ Examples:
                     quantity=args.quantity,
                     show_animation=show_animation,
                 )
-                formatted = format_response(response)
+                formatted = format_response(response, response_only)
                 print(formatted)
 
             except KeyboardInterrupt:
@@ -393,7 +399,7 @@ Examples:
             quantity=args.quantity,
             show_animation=show_animation,
         )
-        formatted = format_response(response)
+        formatted = format_response(response, response_only)
         print(formatted)
 
     else:
