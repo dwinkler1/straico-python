@@ -299,9 +299,9 @@ Examples:
         show_animation = False
 
     if args.response_only is None:
-        response_only = False
-    else:
         response_only = True
+    else:
+        response_only = False
 
     # Get API key
     api_key = args.api_key or get_api_key()
