@@ -109,6 +109,9 @@ straico-api --list-models
 # Verbose output
 straico-api --verbose "Your prompt here"
 
+# Use legacy v0 API
+straico-api --api-version v0 "Your prompt here"
+
 # Run without installation
 uvx "git+https://github.com/dwinkler1/straico-python" -q 2 '2+2'
 ```
@@ -194,6 +197,9 @@ straico-api [OPTIONS] PROMPT
 - `-i, --interactive`: Run in interactive mode
 - `-l, --list-models`: List available models and exit
 - `--api-key KEY`: API key (or use STRAICO_API_KEY env var)
+- `--api-version {v0,v1}`: API version to use (default: v1)
+- `--no-animation`: Hide loading animation
+- `--response-only`: Show only response text without metadata
 - `-v, --verbose`: Show verbose output
 - `-h, --help`: Show help message
 
@@ -233,6 +239,19 @@ straico-api --interactive
 
 # Interactive with specific settings
 straico-api -i --pricing quality --model "openai/gpt-4o"
+```
+
+#### API Version Selection
+
+```bash
+# Use the default v1 API (advanced features)
+straico-api "Your prompt here"
+
+# Explicitly specify v1 API
+straico-api --api-version v1 "Your prompt here"
+
+# Use legacy v0 API
+straico-api --api-version v0 "Your prompt here"
 ```
 
 ## Environment Variables

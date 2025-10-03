@@ -226,6 +226,9 @@ Examples:
   # Interactive mode with balance pricing
   %(prog)s --interactive --pricing balance
   
+  # Use v0 API version (legacy)
+  %(prog)s --api-version v0 "Your prompt here"
+  
   # Set API key via environment variable
   export STRAICO_API_KEY="your-api-key-here"
   %(prog)s "Your prompt here"
@@ -285,6 +288,13 @@ Examples:
         help="Show verbose output including request details",
     )
 
+    parser.add_argument(
+        "--api-version",
+        choices=["v0", "v1"],
+        default="v1",
+        help="API version to use: v0 (basic) or v1 (advanced, default)",
+    )
+
     args = parser.parse_args()
 
     # Validate quantity parameter
@@ -307,7 +317,8 @@ Examples:
 
     # Get API key
     api_key = args.api_key or get_api_key()
-    client = StraicoClient(api_key)
+    # Initialize client with the specified API version (defaults to v1)
+    client = StraicoClient(api_key, api_version=args.api_version)
 
     # List models if requested
     if args.list_models:
