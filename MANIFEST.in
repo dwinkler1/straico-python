@@ -1,0 +1,4 @@
+include README.md
+include LICENSE
+include PACKAGE_INFO.md
+recursive-include straico *.py py.typed
