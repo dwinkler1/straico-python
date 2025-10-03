@@ -231,9 +231,7 @@ Examples:
         """,
     )
 
-    parser.add_argument(
-        "prompt", nargs="?", help="The prompt/question to send to the AI"
-    )
+    parser.add_argument("prompt", nargs="?", help="The prompt/question to send to the AI")
 
     parser.add_argument(
         "-p",
@@ -260,9 +258,7 @@ Examples:
         help="Number of models to select with smart LLM selector (1-4, v1 API only, requires --pricing)",
     )
 
-    parser.add_argument(
-        "-i", "--interactive", action="store_true", help="Run in interactive mode"
-    )
+    parser.add_argument("-i", "--interactive", action="store_true", help="Run in interactive mode")
 
     parser.add_argument(
         "-l",
@@ -271,9 +267,7 @@ Examples:
         help="List available models and exit",
     )
 
-    parser.add_argument(
-        "--api-key", help="Straico API key (can also use STRAICO_API_KEY env var)"
-    )
+    parser.add_argument("--api-key", help="Straico API key (can also use STRAICO_API_KEY env var)")
 
     parser.add_argument(
         "-v",

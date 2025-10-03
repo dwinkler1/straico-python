@@ -70,18 +70,14 @@ class StraicoClient:
             Dictionary containing model information
         """
         try:
-            response = requests.get(
-                "https://api.straico.com/v1/models", headers=self.headers
-            )
+            response = requests.get("https://api.straico.com/v1/models", headers=self.headers)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
             print(f"Error fetching models: {e}", file=sys.stderr)
             return {"data": [], "success": False}
 
-    def find_similar_models(
-        self, model_name: str, max_suggestions: int = 5
-    ) -> List[Dict]:
+    def find_similar_models(self, model_name: str, max_suggestions: int = 5) -> List[Dict]:
         """
         Find similar model names based on string similarity.
 
@@ -112,9 +108,7 @@ class StraicoClient:
         # Also check if the search term appears in model ID or name
         search_term = model_name.lower()
         keyword_matches = [
-            m
-            for m in model_list
-            if search_term in m[0].lower() or search_term in m[1].lower()
+            m for m in model_list if search_term in m[0].lower() or search_term in m[1].lower()
         ]
 
         # Combine and deduplicate results

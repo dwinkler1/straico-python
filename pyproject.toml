@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "straico"
+name = "straico-api"
 version = "1.0.0"
 description = "Unofficial Python client and CLI for Straico API with smart LLM selection"
 readme = "README.md"
@@ -11,18 +11,15 @@ authors = [
     {name = "Daniel Winkler", email = "dw@dwinkler.org"}
 ]
 license = {text = "MIT"}
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Communications :: Chat",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -41,6 +38,15 @@ dev = [
     "mypy>=1.0.0",
     "twine>=4.0.0",
 ]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+lint = [
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
 
 [project.urls]
 Homepage = "https://straico.com"
@@ -49,20 +55,20 @@ Repository = "https://github.com/straicoai/straico-python"
 "Bug Tracker" = "https://github.com/straicoai/straico-python/issues"
 
 [project.scripts]
-straico = "straico.cli:main"
+straico = "straico_api.cli:main"
 
 [tool.setuptools]
-packages = ["straico"]
+packages = ["straico_api"]
 
 [tool.setuptools.package-data]
-straico = ["py.typed"]
+straico_api = ["py.typed"]
 
 [tool.black]
 line-length = 100
-target-version = ['py38']
+target-version = ['py312']
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false

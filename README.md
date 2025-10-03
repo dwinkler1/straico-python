@@ -1,7 +1,7 @@
-# Straico Python Client
+# Straico API Python Client
 
-[![PyPI version](https://badge.fury.io/py/straico.svg)](https://badge.fury.io/py/straico)
-[![Python Versions](https://img.shields.io/pypi/pyversions/straico.svg)](https://pypi.org/project/straico/)
+[![PyPI version](https://badge.fury.io/py/straico-api.svg)](https://badge.fury.io/py/straico-api)
+[![Python Versions](https://img.shields.io/pypi/pyversions/straico-api.svg)](https://pypi.org/project/straico-api/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Unofficial Python client and CLI for the [Straico API](https://straico.com). Straico provides a unified interface to interact with multiple Large Language Models (LLMs) including GPT-4, Claude, Gemini, and more.
@@ -21,7 +21,7 @@ Unofficial Python client and CLI for the [Straico API](https://straico.com). Str
 ## Installation
 
 ```bash
-pip install straico
+pip install straico-api
 ```
 
 ### Development Installation
@@ -37,7 +37,7 @@ pip install -e ".[dev]"
 ### Python API
 
 ```python
-from straico import StraicoClient
+from straico_api import StraicoClient
 
 # Initialize client
 client = StraicoClient(api_key="your-api-key")
@@ -292,7 +292,7 @@ Responses include:
 pytest
 
 # Run tests with coverage
-pytest --cov=straico tests/
+pytest --cov=straico_api tests/
 
 # Run specific test
 pytest tests/test_client.py::test_chat
@@ -305,13 +305,13 @@ pytest tests/test_client.py::test_chat
 pip install -e ".[dev]"
 
 # Format code
-black straico tests
+black straico_api tests
 
 # Lint code
-flake8 straico tests
+flake8 straico_api tests
 
 # Type checking
-mypy straico
+mypy straico_api
 ```
 
 ## Building and Publishing
