@@ -65,10 +65,10 @@ def main():
     )
 
     # Test 3: CLI command availability
-    tests.append(run_command("which straico", "CLI command location"))
+    tests.append(run_command("which straico-api", "CLI command location"))
 
     # Test 4: CLI help
-    tests.append(run_command("straico --help", "CLI help command"))
+    tests.append(run_command("straico-api --help", "CLI help command"))
 
     # Test 5: Client initialization
     tests.append(
@@ -145,7 +145,7 @@ def main():
         print()
         print("Try it out:")
         print("  export STRAICO_API_KEY='your-api-key'")
-        print("  straico 'Hello, world!'")
+        print("  straico-api 'Hello, world!'")
         print()
         return 0
     else:

@@ -84,30 +84,30 @@ for model in models['data']['chat']:
 export STRAICO_API_KEY="your-api-key"
 
 # Simple query
-straico "What is the capital of France?"
+straico-api "What is the capital of France?"
 
 # Use specific pricing strategy
-straico --pricing quality "Explain quantum computing"
-straico --pricing budget "What is 2+2?"
-straico --pricing balance "Write a short story"
+straico-api --pricing quality "Explain quantum computing"
+straico-api --pricing budget "What is 2+2?"
+straico-api --pricing balance "Write a short story"
 
 # Query specific model
-straico --model "openai/gpt-4o" "Tell me a joke"
+straico-api --model "openai/gpt-4o" "Tell me a joke"
 
 # Query multiple models
-straico --models "openai/gpt-4o-mini" "anthropic/claude-3-5-haiku-20241022" "Compare AI approaches"
+straico-api --models "openai/gpt-4o-mini" "anthropic/claude-3-5-haiku-20241022" "Compare AI approaches"
 
 # Smart selector with quantity
-straico --pricing balance --quantity 2 "Give me different perspectives"
+straico-api --pricing balance --quantity 2 "Give me different perspectives"
 
 # Interactive mode
-straico --interactive --pricing balance
+straico-api --interactive --pricing balance
 
 # List available models
-straico --list-models
+straico-api --list-models
 
 # Verbose output
-straico --verbose "Your prompt here"
+straico-api --verbose "Your prompt here"
 ```
 
 ## API Reference
@@ -179,7 +179,7 @@ find_similar_models(model_name: str, max_suggestions: int = 5) -> List[Dict]
 ### Basic Usage
 
 ```bash
-straico [OPTIONS] PROMPT
+straico-api [OPTIONS] PROMPT
 ```
 
 ### Options
@@ -200,36 +200,36 @@ straico [OPTIONS] PROMPT
 
 ```bash
 # Quality - best results, higher cost
-straico --pricing quality "Write a detailed analysis of climate change"
+straico-api --pricing quality "Write a detailed analysis of climate change"
 
 # Balance - good quality, moderate cost (default)
-straico --pricing balance "Explain machine learning"
+straico-api --pricing balance "Explain machine learning"
 
 # Budget - fast and cheap
-straico --pricing budget "What is 2+2?"
+straico-api --pricing budget "What is 2+2?"
 ```
 
 #### Model Selection
 
 ```bash
 # Specific model
-straico --model "openai/gpt-4o" "Complex reasoning task"
+straico-api --model "openai/gpt-4o" "Complex reasoning task"
 
 # Multiple specific models
-straico --models "openai/gpt-4o-mini" "anthropic/claude-3-5-sonnet-20241022" "Compare approaches"
+straico-api --models "openai/gpt-4o-mini" "anthropic/claude-3-5-sonnet-20241022" "Compare approaches"
 
 # Smart selector with quantity
-straico --pricing quality --quantity 3 "Analyze from multiple perspectives"
+straico-api --pricing quality --quantity 3 "Analyze from multiple perspectives"
 ```
 
 #### Interactive Sessions
 
 ```bash
 # Start interactive mode
-straico --interactive
+straico-api --interactive
 
 # Interactive with specific settings
-straico -i --pricing quality --model "openai/gpt-4o"
+straico-api -i --pricing quality --model "openai/gpt-4o"
 ```
 
 ## Environment Variables
@@ -261,7 +261,7 @@ except Exception as e:
 For invalid model names, the client automatically suggests similar models:
 
 ```bash
-$ straico --model "gpt4" "Hello"
+$ straico-api --model "gpt4" "Hello"
 ❌ Error: Model not found: gpt4
 
 💡 Did you mean one of these models?
