@@ -104,7 +104,8 @@ def format_response(response: Dict, response_only: bool = False) -> str:
             if idx > 1:
                 output += "\n" + "=" * 60 + "\n"
 
-            output += f"\n🤖 Model {idx}: {model_name}\n"
+            if not response_only and output:
+                output += f"\n🤖 Model {idx}: {model_name}\n"
             output += f"\n{completion_text}\n"
 
             # Format annotations if present
