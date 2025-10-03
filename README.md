@@ -340,9 +340,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- **Documentation**: [Straico API Docs](https://documenter.getpostman.com/view/5900072/2s9YyzddrR)
-- **Website**: [straico.com](https://straico.com)
-- **Issues**: [GitHub Issues](https://github.com/straicoai/straico-python/issues)
+- **Issues**: [GitHub Issues](https://github.com/dwinkler1/straico-python/issues)
 - **Author**: Daniel Winkler (dw@dwinkler.org)
 
 ## Changelog

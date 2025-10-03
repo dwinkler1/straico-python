@@ -49,10 +49,10 @@ lint = [
 ]
 
 [project.urls]
-Homepage = "https://straico.com"
+Homepage = "https://github.com/dwinkler1/straico-python"
 Documentation = "https://documenter.getpostman.com/view/5900072/2s9YyzddrR"
-Repository = "https://github.com/straicoai/straico-python"
-"Bug Tracker" = "https://github.com/straicoai/straico-python/issues"
+Repository = "https://github.com/dwinkler1/straico-python"
+"Bug Tracker" = "https://github.com/dwinkler1/straico-python/issues"
 
 [project.scripts]
 straico-api = "straico_api.cli:main"
