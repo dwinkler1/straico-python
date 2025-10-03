@@ -95,7 +95,7 @@ straico-api --pricing balance "Write a short story"
 straico-api --model "openai/gpt-4o" "Tell me a joke"
 
 # Query multiple models
-straico-api --models "openai/gpt-4o-mini" "anthropic/claude-3-5-haiku-20241022" "Compare AI approaches"
+straico-api  "Compare AI approaches" --models "openai/gpt-4o-mini" "anthropic/claude-3-5-haiku-20241022"
 
 # Smart selector with quantity
 straico-api --pricing balance --quantity 2 "Give me different perspectives"
