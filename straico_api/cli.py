@@ -270,6 +270,13 @@ Examples:
     parser.add_argument("--api-key", help="Straico API key (can also use STRAICO_API_KEY env var)")
 
     parser.add_argument(
+      "--show-animation",
+      action="store_true",
+      type=bool,
+      help="Show loading animation (default: True)"
+    )
+
+    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -285,6 +292,11 @@ Examples:
             file=sys.stderr,
         )
         sys.exit(1)
+    if args.show_animation is None:
+        show_animation = True
+    else:
+        show_animation = args.show_animation
+
 
     # Get API key
     api_key = args.api_key or get_api_key()
@@ -353,6 +365,7 @@ Examples:
                     model=args.model,
                     models=args.models,
                     quantity=args.quantity,
+                    show_animation=show_animation,
                 )
                 formatted = format_response(response)
                 print(formatted)
@@ -379,6 +392,7 @@ Examples:
             model=args.model,
             models=args.models,
             quantity=args.quantity,
+            show_animation=show_animation,
         )
         formatted = format_response(response)
         print(formatted)
