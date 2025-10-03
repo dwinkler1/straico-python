@@ -270,10 +270,9 @@ Examples:
     parser.add_argument("--api-key", help="Straico API key (can also use STRAICO_API_KEY env var)")
 
     parser.add_argument(
-      "--show-animation",
+      "--no-animation",
       action="store_true",
-      type=bool,
-      help="Show loading animation (default: True)"
+      help="Hide loading animation"
     )
 
     parser.add_argument(
@@ -292,10 +291,10 @@ Examples:
             file=sys.stderr,
         )
         sys.exit(1)
-    if args.show_animation is None:
+    if args.no_animation is None:
         show_animation = True
     else:
-        show_animation = args.show_animation
+        show_animation = False
 
 
     # Get API key
