@@ -194,6 +194,7 @@ straico-api [OPTIONS] PROMPT
 - `-i, --interactive`: Run in interactive mode
 - `-l, --list-models`: List available models and exit
 - `--api-key KEY`: API key (or use STRAICO_API_KEY env var)
+- `--api-version {v0,v1}`: API version to use (default: v1)
 - `-v, --verbose`: Show verbose output
 - `-h, --help`: Show help message
 
@@ -235,6 +236,19 @@ straico-api --interactive
 straico-api -i --pricing quality --model "openai/gpt-4o"
 ```
 
+#### API Version Selection
+
+```bash
+# Use v1 API (default)
+straico-api "What is AI?"
+
+# Explicitly use v1 API
+straico-api --api-version v1 "What is AI?"
+
+# Use v0 API for backward compatibility
+straico-api --api-version v0 --model "openai/gpt-4o" "What is AI?"
+```
+
 ## Environment Variables
 
 - `STRAICO_API_KEY`: Your Straico API key (recommended method)
@@ -249,6 +263,10 @@ straico-api -i --pricing quality --model "openai/gpt-4o"
 
 - **v0**: Single model responses, basic smart selector
 - **v1**: Multi-model support, advanced smart selector with quantity parameter (default)
+
+The API version can be specified via:
+- CLI: `--api-version {v0,v1}` (default: v1)
+- Python: `StraicoClient(api_key, api_version="v0")` or `api_version="v1"`
 
 ## Error Handling
 
