@@ -183,7 +183,10 @@ class StraicoClient:
                 }
             elif self.api_version == "v1":
                 # v1: smart_llm_selector (single model)
-                payload["smart_llm_selector"] = pricing_method
+                payload["smart_llm_selector"] = {
+                    "quantity": 1,
+                    "pricing_method": pricing_method,
+                }
             else:
                 # v0: smart_llm_selector (string format)
                 payload["smart_llm_selector"] = pricing_method
@@ -208,16 +211,38 @@ class StraicoClient:
                 try:
                     error_data = response.json()
                     api_error = error_data.get("error", "")
-                    if "Model not found" in api_error and model:
-                        # Extract the model name from error and find suggestions
-                        similar_models = self.find_similar_models(model)
-                        return {
-                            "success": False,
-                            "error": api_error,
-                            "model_not_found": True,
-                            "requested_model": model,
-                            "suggestions": similar_models,
-                        }
+                    
+                    # Check for model not found error
+                    if "Model not found" in api_error:
+                        # Determine which model(s) were requested
+                        requested_model = None
+                        if model:
+                            # Single model specified
+                            requested_model = model
+                        elif models and len(models) == 1:
+                            # Single model in models list
+                            requested_model = models[0]
+                        elif models and len(models) > 1:
+                            # Multiple models - try to extract the problematic one from error message
+                            # The API error might contain the specific model name
+                            for m in models:
+                                if m in api_error:
+                                    requested_model = m
+                                    break
+                            # If we can't identify the specific model, use the first one as fallback
+                            if not requested_model:
+                                requested_model = models[0]
+                        
+                        if requested_model:
+                            # Find similar models for suggestions
+                            similar_models = self.find_similar_models(requested_model)
+                            return {
+                                "success": False,
+                                "error": api_error,
+                                "model_not_found": True,
+                                "requested_model": requested_model,
+                                "suggestions": similar_models,
+                            }
                 except:
                     pass
 
