@@ -4,7 +4,7 @@
 [![Python Versions](https://img.shields.io/pypi/pyversions/straico-api.svg)](https://pypi.org/project/straico-api/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Unofficial Python client and CLI for the Straico API. Straico provides a unified interface to interact with multiple Large Language Models (LLMs) including GPT-4, Claude, Gemini, and more.
+Unofficial Python client and CLI for the [Straico API](https://straico.com). Straico provides a unified interface to interact with multiple Large Language Models (LLMs) including GPT-4, Claude, Gemini, and more.
 
 ## Features
 
@@ -108,6 +108,9 @@ straico-api --list-models
 
 # Verbose output
 straico-api --verbose "Your prompt here"
+
+# Run without installation
+uvx "git+https://github.com/dwinkler1/straico-python" -q 2 '2+2'
 ```
 
 ## API Reference
